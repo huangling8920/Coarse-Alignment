@@ -73,5 +73,3 @@ n_feat_ratio,track_success,inlier_ratio,feature_dispersion,
 reproj_norm,blur_indicator,reflection_indicator,preint_norm,rho_target
 ```
 
-The target construction is a replaceable default because the paper does not fully specify the training-label generation.
-
