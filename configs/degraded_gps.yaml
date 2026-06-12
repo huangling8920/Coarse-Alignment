@@ -1,0 +1,12 @@
+extends: default.yaml
+experiment:
+  scenario: degraded_gps
+  evaluation_window_s: [150.0, 300.0]
+  methods:
+    - transverse_oba
+    - transverse_usque
+    - gps_sins_closed_loop
+    - vi_fixed
+    - vi_empirical
+    - proposed
+

@@ -1,0 +1,24 @@
+extends: default.yaml
+experiment:
+  scenario: vr
+  scenarios:
+    s1_normal:
+      gps_sigma_v: 0.03
+      visibility_m: 220
+      visual_level: normal
+    s2_reflection_weak_texture:
+      gps_sigma_v: 0.20
+      visibility_m: 160
+      visual_level: strong_reflection
+    s3_blizzard_outage:
+      gps_sigma_v: 0.03
+      visibility_m: 45
+      visual_level: motion_blur
+      gps_outages_s:
+        - [125.0, 133.0]
+        - [160.0, 168.0]
+    s4_weak_snow:
+      gps_sigma_v: 0.03
+      visibility_m: 180
+      visual_level: weak_snow
+

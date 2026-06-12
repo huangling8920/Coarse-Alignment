@@ -1,0 +1,11 @@
+extends: default.yaml
+experiment:
+  scenario: degraded_gps
+  evaluation_window_s: [150.0, 300.0]
+  methods:
+    - gps_sins_closed_loop
+    - vi_fixed
+    - vi_empirical
+    - vi_learned_partial_feedback
+    - proposed
+

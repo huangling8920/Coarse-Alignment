@@ -1,0 +1,13 @@
+extends: default.yaml
+experiment:
+  scenario: visual_degradation
+  levels:
+    - normal
+    - weak_snow
+    - strong_reflection
+    - motion_blur
+  methods:
+    - vi_fixed
+    - vi_empirical
+    - proposed
+

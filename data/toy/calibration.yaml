@@ -1,0 +1,29 @@
+camera:
+  width: 752
+  height: 480
+  fx: 376.0
+  fy: 376.0
+  cx: 376.0
+  cy: 240.0
+  distortion:
+  - 0
+  - 0
+  - 0
+  - 0
+extrinsic:
+  C_c_b:
+  - - 1.0
+    - 0.0
+    - 0.0
+  - - 0.0
+    - 1.0
+    - 0.0
+  - - 0.0
+    - 0.0
+    - 1.0
+  p_c_b:
+  - 0.05
+  - 0.0
+  - 0.02
+  time_offset_s: 0.0
+  monocular_scale: 1.0

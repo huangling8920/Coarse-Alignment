@@ -1,0 +1,12 @@
+extends: default.yaml
+experiment:
+  scenario: robustness
+  latitudes_deg: [80.0, 85.0, 89.0]
+  speeds_mps: [5.0, 15.0, 25.0]
+  gyro_bias_dph: [0.5, 1.0, 3.0]
+  gps_outage_duration_s: [5.0, 10.0, 20.0]
+  camera_rate_hz: [10, 20, 30]
+  methods:
+    - gps_sins_closed_loop
+    - proposed
+

@@ -1,0 +1,76 @@
+project:
+  name: quality_aware_vi_gps_sins
+  seed: 2026
+  output_dir: outputs/default
+
+runtime:
+  device: auto
+  num_workers: 0
+
+data:
+  root: data/toy
+  duration_s: 300.0
+  imu_rate_hz: 200
+  camera_rate_hz: 20
+  gps_rate_hz: 1
+  image_width: 752
+  image_height: 480
+  n_ref_features: 200
+  seeds: [3, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79]
+
+sensor:
+  gyro_bias_dph: 1.0
+  gyro_random_walk_dps_sqrt_h: 0.15
+  accel_bias_ug: 50.0
+  accel_random_walk_ug_sqrt_hz: 10.0
+  normal_gps_sigma_v: 0.03
+  degraded_gps_sigma_v: 0.30
+  degraded_gps_window_s: [120.0, 180.0]
+  gps_outages_s:
+    - [130.0, 135.0]
+    - [150.0, 155.0]
+    - [170.0, 175.0]
+
+calibration:
+  C_c_b:
+    - [1.0, 0.0, 0.0]
+    - [0.0, 1.0, 0.0]
+    - [0.0, 0.0, 1.0]
+  p_c_b: [0.05, 0.0, 0.02]
+  time_offset_s: 0.0
+  monocular_scale: 1.0
+
+quality_model:
+  input_dim: 8
+  hidden_dims: [16, 8]
+  rho_min: 0.25
+  lr: 0.001
+  epochs: 120
+  batch_size: 128
+  weight_decay: 0.0
+  val_ratio: 0.2
+  test_ratio: 0.2
+  heading_proxy_weight: 0.05
+
+filter:
+  initial_attitude_error_deg: [0.8, -0.5, 2.0]
+  initial_bias_error_dph: [0.08, -0.06, 0.16]
+  process_attitude_std_deg: 0.015
+  process_bias_std_dph: 0.002
+  gps_attitude_std_deg: 0.35
+  vi_velocity_std: 0.08
+  vi_attitude_std_deg: 0.20
+  convergence_threshold_deg: 0.5
+  convergence_hold_s: 20.0
+  failure_heading_threshold_deg: 2.0
+  feedback_gain: 1.0
+
+experiment:
+  scenario: degraded_gps
+  evaluation_window_s: [150.0, 300.0]
+  methods:
+    - gps_sins_closed_loop
+    - vi_fixed
+    - vi_empirical
+    - proposed
+
