@@ -77,15 +77,6 @@ python scripts/reproduce_tables.py --config configs/default.yaml --output output
 
 This command regenerates toy data, trains the quality model, runs the selected methods across seeds/scenarios, and writes CSV tables to `outputs/reproduction/tables/`.
 
-## External VIO Baselines
-
-This repository does not reimplement VINS-Mono, OpenVINS, or ORB-SLAM3. Instead, it provides a standard CSV adapter in `src/vio/external_adapters.py`. To compare against these baselines, export their results with columns:
-
-```text
-t, roll_deg, pitch_deg, heading_deg, valid, runtime_ms, memory_mb
-```
-
-The evaluator converts them into the same heading-error, convergence, failure, runtime, and memory metrics.
 
 ## Outputs
 
